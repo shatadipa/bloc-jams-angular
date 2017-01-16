@@ -13,8 +13,8 @@
          */
         SongPlayer.currentTime = null;
 
-        SongPlayer.volume=null;
-        
+        SongPlayer.volume = null;
+
 
         SongPlayer.currentAlbum = Fixtures.getAlbum();
 
@@ -46,6 +46,17 @@
         };
 
         /**
+         * @function setCurrentVolume
+         * @desc Set current volume [takes value 0-100] of currently playing song
+         * @param {Number} time
+         */
+        SongPlayer.setCurrentVolume = function (volume) {
+            if (currentBuzzObject) {
+                currentBuzzObject.setVolume(volume);
+            }
+        };
+
+        /**
          * @function setSong
          * @desc Stops currently playing song and loads new audio file as currentBuzzObject
          * @param {Object} song
@@ -69,8 +80,6 @@
                 });
             });
         };
-
-
 
         /**
          * @function playSong
@@ -142,11 +151,6 @@
                 setSong(song);
                 playSong(song);
             }
-        };
-
-
-        SongPlayer.setVolume =function(){
-            
         };
 
         return SongPlayer;
